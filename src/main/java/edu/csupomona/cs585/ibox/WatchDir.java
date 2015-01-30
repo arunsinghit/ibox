@@ -31,6 +31,9 @@ public class WatchDir {
     static <T> WatchEvent<T> cast(WatchEvent<?> event) {
         return (WatchEvent<T>)event;
     }
+    public Map<WatchKey, Path> getKeys() {
+		return this.keys;
+	}
 
     /**
      * Register the given directory with the WatchService
@@ -92,7 +95,7 @@ public class WatchDir {
                 if (kind == OVERFLOW) {
                     continue;
                 }
-
+                
                 // Context for directory entry event is the file name of entry
                 WatchEvent<Path> ev = cast(event);
                 Path name = ev.context();

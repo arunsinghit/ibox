@@ -11,17 +11,15 @@ import com.google.api.services.drive.model.FileList;
 
 
 public class GoogleDriveFileSyncManager implements FileSyncManager {
-
 	//Google Drive service
 	public Drive service;
-
 	public GoogleDriveFileSyncManager(Drive service) {
 		this.service = service;
 	}
-
 	@Override
 	public void addFile(java.io.File localFile) throws IOException {
 		//Insert a file
+		System.out.println("InAdd");
 		File body = new File();
 		body.setTitle(localFile.getName());
 		FileContent mediaContent = new FileContent("*/*", localFile);
